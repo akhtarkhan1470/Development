@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1 >Weather App</h1>
+    <form onsubmit="getweather(); return false;">
+        <label for="cityname">City Name</label>
+        <input type="text" name="cityname" id="temp1" required placeholder="Enter city Name">
+        <button type="submit">Click Here</button>
+        <div id="ab"></div>
+    </form>
+
+
+
+    <script>
+        function getweather(){
+            var city = document.getElementById("temp1").value;
+            
+axios.get(`https://api.weatherapi.com/v1/current.json?key=068463bc63a247f7a4e122458252601&q=${city}&aqi=yes`)
+
+ .then(function (response) {
+    // handle success
+    console.log(response);x 
+    console.log(response.data);
+    var data1=(response.data.current.temp_c);
+    // document.querySelector("#ab").innerHTML=`Today Temp in Celsus ${data1}`;
+    document.getElementById("ab").innerHTML="Today Temperature is =" + data1;
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  });
+        }
+    </script>
+</body>
+
+</html>
